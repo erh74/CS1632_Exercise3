@@ -10,7 +10,6 @@ public class RentACatTest {
 
 
 // Test the catExists() method by testing that an existing cat is found and returns true
-
   @Test
   public void testCatExistsExists(){
     //make an ArrayList of doubled cats
@@ -90,14 +89,29 @@ public void testListCatsGood(){
 // Test the returnCat() method by testing that you are able to successfully return a rented cat
   @Test
   public void testReturnCatValid(){
+    //make a mock Cat
+    Cat c1 = Mockito.mock(Cat.class);
+    //set a stub so that the rented field will be true
+    Mockito.when(c1.getRented()).thenReturn(true);
+    //create a Rent-A-Cat object
+    RentACat rc = new RentACat();
 
+    assertTrue(rc.returnCat(c1));
   }
 
 // Test the rentCat() method by testing that you cannot rent a cat that is already rented
   @Test
   public void testRentCatAlreadyRented(){
+    //make a mock Cat
+    Cat c1 = Mockito.mock(Cat.class);
+    //set a stub so that the rented field will be true
+    Mockito.when(c1.getRented()).thenReturn(true);
+    //create a Rent-A-Cat object
+    RentACat rc = new RentACat();
+
+    assertFalse(rc.rentCat(c1));
 
   }
 
-  
+
 }
